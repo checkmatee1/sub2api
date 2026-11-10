@@ -1,0 +1,812 @@
+{
+  "verified_at": "2026-11-10T09:29:21.106820+00:00",
+  "results": [
+    {
+      "id": "claude-fable-5.1",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "claude-fable-5.2",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "claude-fable-5",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "claude-haiku-5.5",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "claude-opus-4.8-fast",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "claude-opus-4.8",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "claude-opus-5.5",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "claude-opus-5",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "claude-sonnet-5.5",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "claude-sonnet-5",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "copilot-search-a",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "copilot-search-a"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "copilot-search-a"
+      }
+    },
+    {
+      "id": "copilot-search-b",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "copilot-search-b"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "copilot-search-b"
+      }
+    },
+    {
+      "id": "gemini-3.8-flash",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      }
+    },
+    {
+      "id": "gemini-4-argon",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      }
+    },
+    {
+      "id": "gpt-5.3-codex",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "gpt-5.4-nano",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-5.4-nano-2026-03-17"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "type": "chat",
+      "policy": "enabled",
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "gpt-6.1-sol",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "gpt-6-astra",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "gpt-6-luna-decisions",
+      "type": "decisions",
+      "policy": null,
+      "endpoint": "/v1/decisions",
+      "upstream": {
+        "http": 400
+      },
+      "adapter": {
+        "supported_endpoint": false
+      },
+      "followup": {
+        "http": 400,
+        "error_summary": "Bad Request"
+      }
+    },
+    {
+      "id": "gpt-6-luna",
+      "type": "chat",
+      "policy": "enabled",
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "gpt-6-sol",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "kimi-k3-base",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      }
+    },
+    {
+      "id": "kimi-k3-copilot",
+      "type": "chat",
+      "policy": "disabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      }
+    },
+    {
+      "id": "kimi-k3",
+      "type": "chat",
+      "policy": "enabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      }
+    },
+    {
+      "id": "mai-code-1.1-flash",
+      "type": "chat",
+      "policy": "enabled",
+      "endpoint": "/responses",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "supported_endpoint": false
+      }
+    },
+    {
+      "id": "gpt-4o-mini-2024-07-18",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-mini-2024-07-18"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-mini-2024-07-18"
+      }
+    },
+    {
+      "id": "gpt-4o-2024-11-20",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-2024-11-20"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-2024-11-20"
+      }
+    },
+    {
+      "id": "gpt-4o-2024-08-06",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-2024-08-06"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-2024-08-06"
+      }
+    },
+    {
+      "id": "text-embedding-3-small",
+      "type": "embeddings",
+      "policy": null,
+      "endpoint": "/embeddings",
+      "upstream": {
+        "http": 400
+      },
+      "adapter": {
+        "supported_endpoint": false
+      },
+      "followup": {
+        "http": 400,
+        "error_summary": "Bad Request"
+      }
+    },
+    {
+      "id": "text-embedding-3-small-inference",
+      "type": "embeddings",
+      "policy": null,
+      "endpoint": "/embeddings",
+      "upstream": {
+        "http": 400
+      },
+      "adapter": {
+        "supported_endpoint": false
+      },
+      "followup": {
+        "http": 400,
+        "error_summary": "Bad Request"
+      }
+    },
+    {
+      "id": "claude-haiku-4.5",
+      "type": "chat",
+      "policy": "enabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      },
+      "native_messages": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      }
+    },
+    {
+      "id": "gpt-4.1-2025-04-14",
+      "type": "chat",
+      "policy": "enabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4.1-2025-04-14"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4.1-2025-04-14"
+      }
+    },
+    {
+      "id": "gpt-41-copilot",
+      "type": "completion",
+      "policy": null,
+      "endpoint": "/completions",
+      "upstream": {
+        "http": 404
+      },
+      "adapter": {
+        "supported_endpoint": false
+      },
+      "followup": {
+        "http": 400,
+        "error_code": "model_not_supported"
+      }
+    },
+    {
+      "id": "gpt-3.5-turbo-0613",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-mini-2024-07-18"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-mini-2024-07-18"
+      }
+    },
+    {
+      "id": "gpt-4",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      }
+    },
+    {
+      "id": "gpt-4-0613",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      }
+    },
+    {
+      "id": "gpt-4-0125-preview",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 400,
+        "error_code": "model_not_supported",
+        "error_type": "invalid_request_error",
+        "error_param": "model"
+      },
+      "adapter": {
+        "http": 400,
+        "error_type": "upstream_error"
+      }
+    },
+    {
+      "id": "gpt-4o-2024-05-13",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4.1-2025-04-14"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4.1-2025-04-14"
+      }
+    },
+    {
+      "id": "gpt-4-o-preview",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4.1-2025-04-14"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4.1-2025-04-14"
+      }
+    },
+    {
+      "id": "gpt-4.1",
+      "type": "chat",
+      "policy": "enabled",
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4.1-2025-04-14"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4.1-2025-04-14"
+      }
+    },
+    {
+      "id": "gpt-3.5-turbo",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-mini-2024-07-18"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-mini-2024-07-18"
+      }
+    },
+    {
+      "id": "gpt-4o-mini",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-mini-2024-07-18"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-mini-2024-07-18"
+      }
+    },
+    {
+      "id": "gpt-4o",
+      "type": "chat",
+      "policy": null,
+      "endpoint": "/chat/completions",
+      "upstream": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-2024-11-20"
+      },
+      "adapter": {
+        "http": 200,
+        "valid_response": true,
+        "response_model": "gpt-4o-2024-11-20"
+      }
+    },
+    {
+      "id": "text-embedding-ada-002",
+      "type": "embeddings",
+      "policy": null,
+      "endpoint": "/embeddings",
+      "upstream": {
+        "http": 400
+      },
+      "adapter": {
+        "supported_endpoint": false
+      },
+      "followup": {
+        "http": 400,
+        "error_summary": "Bad Request"
+      }
+    }
+  ]
+}

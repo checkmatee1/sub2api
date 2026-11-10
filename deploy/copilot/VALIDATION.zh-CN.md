@@ -61,3 +61,9 @@
 - 首轮并发探测触发 adapter 的 2 秒请求间隔限制（429）；改为逐次间隔超过 2 秒后重测，以上结果来自重测。
 - 最终原 sub2api-snapshot 仍 running，StartedAt=2026-11-05T13:11:00.001051073Z，RestartCount=1；/health 返回 status=ok。
 - 本轮仅补充部署配置和验证记录，没有修改应用源码，先前完整测试结果仍列于上文；长期续期及在线断连取消仍未验证。
+
+## Complete model catalogue verification (2026-11-10)
+
+All 47 catalogue IDs were requested using their advertised endpoint or the endpoint appropriate to their model type. See [full results](copilot-all-models-2026-11-10.md) and [structured evidence](copilot-all-models-2026-11-10.json).
+
+13 IDs passed the existing adapter; 1 additional ID (gpt-5.4-nano) passed the upstream Responses API, which the adapter does not implement. 28 IDs returned model_not_supported. Five special endpoint checks did not produce a valid response and are not evidence of account entitlement failure. Existing production account mappings were not expanded in this verification task. The original relay remained running without restart.
