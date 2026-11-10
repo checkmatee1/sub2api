@@ -1,0 +1,47 @@
+name: sub2api-copilot
+services:
+  adapter:
+    image: sub2api-copilot-adapter:0ea08feb-hardened-v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: ["bun", "run", "dist/main.js"]
+    command: ["start", "--port", "4141", "--account-type", "${COPILOT_ACCOUNT_TYPE:-individual}", "--rate-limit", "2"]
+    volumes:
+      - ./runtime/auth:/root/.local/share/copilot-api
+    restart: unless-stopped
+    cpus: 0.50
+    mem_limit: 512m
+    pids_limit: 128
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    healthcheck:
+      test: ["CMD", "bun", "-e", "try { const r = await fetch('http://127.0.0.1:4141/'); process.exit(r.ok ? 0 : 1); } catch { process.exit(1); }"]
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+    logging:
+      driver: none
+    networks: [copilot]
+  gateway:
+    image: nginx:1.28.0-alpine
+    ports: ["127.0.0.1:${COPILOT_GATEWAY_PORT:-18991}:8080"]
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./runtime/auth.inc:/etc/nginx/auth.inc:ro
+    restart: unless-stopped
+    cpus: 0.25
+    mem_limit: 64m
+    pids_limit: 64
+    security_opt: ["no-new-privileges:true"]
+    logging:
+      driver: none
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    networks: [copilot]
+networks:
+  copilot: {}
