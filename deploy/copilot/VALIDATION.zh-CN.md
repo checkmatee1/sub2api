@@ -1,6 +1,6 @@
 # 验证记录
 
-实现状态及实际命令结果由本次执行补全。未通过真实 Copilot 授权前，模型推理、流式、工具调用、续期及经 Sub2API 的端到端链路均保持未验证状态。
+以下区分离线套件、独立适配器真实调用和经线上 Sub2API 的端到端链路；不能将独立适配器成功等同于线上接入完成。
 
 ## 线上基线
 
@@ -33,3 +33,14 @@
 - 全程未停止或重启原服务。核对原容器仍 running，启动时间及重启次数与以上基线一致，`/health` 持续返回 status=ok。
 
 运行日志保存在独立开发副本 `.work-copilot/`，不提交日志、真实配置、密钥和授权数据。
+
+## 设备授权后的真实验证（2026-11-10）
+
+- GitHub 设备授权已保存，独立 adapter/gateway 均健康；Bearer 和 x-api-key 查询模型列表均 HTTP 200。
+- gpt-4.1 普通 Chat Completions 请求 HTTP 200，有有效 choices。
+- gpt-4.1 SSE HTTP 200，收到完整 [DONE] 结束事件。
+- gpt-4.1 强制 get_weather 工具调用 HTTP 200，返回正确 tool_calls；未执行任何外部工具。
+- gpt-4.1 经 /v1/messages 转换 HTTP 200，返回有效 Anthropic message/content。
+- claude-haiku-5.5 和 claude-haiku-4.5 目录中可见但实际请求 HTTP 400；直接核实前者上游错误为 model_not_supported。模型目录不构成可用性证明，本轮仅确认 gpt-4.1 可用。
+- 尚未验证长时间令牌续期、在线断连取消及经线上 Sub2API 的端到端链路。
+- 线上数据库及账号未写入；新增专用账号/分组属于下一步，遵守已确认设计中的数据库隔离边界。
