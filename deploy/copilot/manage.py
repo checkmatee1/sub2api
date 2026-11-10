@@ -149,14 +149,16 @@ def auth():
     raise ValueError("GitHub device authorization expired; rerun auth")
 
 
-def local_request(path, authenticated=False, api_key=False):
+def local_request(path, authenticated=False, api_key=False, method="GET", body=None):
     headers = {}
     if authenticated:
         key = gateway_key()
         headers = {"X-Api-Key": key} if api_key else {"Authorization": "Bearer " + key}
     connection = http.client.HTTPConnection("127.0.0.1", int(config()["COPILOT_GATEWAY_PORT"]), timeout=10)
     try:
-        connection.request("GET", path, headers=headers)
+        if body is not None:
+            headers["Content-Type"] = "application/json"
+        connection.request(method, path, body=body, headers=headers)
         response = connection.getresponse()
         body = response.read(4 * 1024 * 1024)
         return response.status, body
@@ -168,12 +170,16 @@ def verify():
     # Integration smoke checks against the actual gateway, not unit tests.
     cases = [("/healthz", False, 200), ("/v1/models", False, 401),
              ("/token", True, 404), ("/usage", True, 404),
-             ("/v1/responses", False, 401), ("/v1/responses", True, 501)]
+             ("/v1/responses", False, 401)]
     for path, authenticated, expected in cases:
         status, _ = local_request(path, authenticated)
         print(path + ": " + str(status))
         if status != expected:
             raise ValueError("Gateway integration check failed")
+    status, _ = local_request("/v1/responses", True, method="POST", body=b"{}")
+    print("Responses validation: " + str(status))
+    if status != 400:
+        raise ValueError("Responses request validation is unavailable")
     for api_key in (False, True):
         status, body = local_request("/v1/models", True, api_key)
         print("Authenticated models (" + ("x-api-key" if api_key else "bearer") + "): " + str(status))

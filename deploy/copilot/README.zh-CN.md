@@ -8,7 +8,7 @@
 
 选择这个实现是为了保留普通模型转发、流式及外部工具调用语义，避免将官方 SDK 的 Agent 执行循环误作普通聊天接口。该锁定源码较旧；必须用真实账号验证后才可认为接通。不得以源码审查替代在线兼容验证。
 
-本地 `harden.mjs` 删除 `/token` 路由、统一返回不含原始上游正文的错误，并将断连取消传给上游请求。认证网关只开放 `/v1/models`、`/v1/chat/completions`、`/v1/messages` 及 `/v1/messages/count_tokens`。`/v1/responses` 返回明确的 501，`/token`、`/usage` 等路径返回 404。不提供工具执行、文件读写或 shell 能力；外部工具调用仍由客户端执行。
+本地 `harden.mjs` 删除 `/token` 路由、统一返回不含原始上游正文的错误，并将断连取消传给上游请求。v2 认证网关使用 `nginx.responses.conf`，新增 `/v1/responses`，保留 `/v1/models`、`/v1/chat/completions`、`/v1/messages` 及 `/v1/messages/count_tokens`。`responses.ts` 复用服务端认证和限流，将 JSON/SSE 原样转发至固定 Copilot Responses 上游，不转换协议、不执行工具；客户端断连会取消上游。旧 `nginx.conf` 保留给仍在运行的 v1 实例。`/token`、`/usage` 等路径返回 404。
 
 ## 初始化和构建
 
@@ -44,7 +44,7 @@ python3 manage.py verify
 
 ## 接入正在运行的 Sub2API
 
-本次交付遵守已确认的“原数据库不修改”边界：只生成私密账号模板，不向线上管理 API 写入账号或分组。以下为后续接入操作说明；新增线上账号本身会写数据库，应在用户允许该写入后执行。它不需要停止或重启中转站。
+用户已授权新增专用账号和 private 分组，实际部署见 `VALIDATION.zh-CN.md`。新增账号本身会写数据库，但不需要停止或重启中转站。以下默认地址适用于默认部署；并行 Responses 实例使用独立 18992 端口。
 
 先在现有 Sub2API 容器里确认宿主机可达（无需传入密钥）：
 
@@ -60,7 +60,7 @@ docker exec sub2api-snapshot wget -q -O - http://host.docker.internal:18991/heal
 - API Key 从本机 `runtime/gateway.key` 经本机程序填入，勿输出到聊天。
 - Responses 支持模式设置为强制 Chat Completions：`extra.openai_responses_mode = "force_chat_completions"`，同时记录 `openai_responses_supported = false`。
 - 并发 1，仅加入专用 Copilot 分组；模型使用实际 `/v1/models` 返回的 ID，不凭名称猜测。
-- 先使用 Chat Completions 客户端。新源码会将不支持 Responses 的账号排除在 Responses 调度之外，不承诺 Codex Responses 客户端能使用此账号。
+- 此设置用于旧 Chat 模型账号。Responses 模型应另建账号并设 `extra.openai_responses_mode = "force_responses"`、`openai_responses_supported = true`，只开放实测成功的模型；不能将两个协议混入一个强制 Chat 的账号。
 
 可执行 `python3 manage.py account-template` 在 `runtime/account.json` 生成含真实本地网关密钥的私密管理 API 请求模板，不显示内容，也不自动创建账号。上传或调用管理 API时只能由本机程序读取此文件；不要 cat 或提交。分组 ID 按实际管理端填写。该模板不是批量账号导入文件。
 
@@ -81,3 +81,26 @@ python3 manage.py stop
 ## 本次真实可用模型
 
 已实测 gpt-4.1 的普通请求、SSE、工具调用及 Messages 转换均成功。Haiku 5.5/4.5 虽在模型目录中出现，但实际返回 400；不要将目录中的所有模型直接加入可用白名单。
+
+## Responses v2 parallel deployment (2026-11-10)
+
+The running v1 project is preserved on port 18991. Responses v2 is deployed separately as `sub2api-copilot-responses` on loopback port 18992 with its own `runtime/auth-responses` directory. The locally generated Compose configuration is `runtime/compose.responses.json`; it contains paths, not credential values, and is ignored by Git.
+
+Account 6 (`GitHub Copilot Responses (private)`) is bound only to exclusive group 7 (`Copilot_private`). Its base URL is `http://host.docker.internal:18992`, Responses mode is `force_responses`, and model alias `copilot-gpt-5.4-nano` maps to `gpt-5.4-nano`. Compact and WebSocket remain disabled. Existing Chat account 5 is unchanged, including its pre-existing paused scheduling state.
+
+Inspect the parallel project without changing either service:
+
+```sh
+docker compose -p sub2api-copilot-responses -f runtime/compose.responses.json ps
+```
+
+To roll back, pause only account 6 first. If the parallel project is no longer needed, stop only that project. Do not use the original relay's Compose commands.
+
+The completed build-stage image can run the complete upstream suite and deterministic HTTP integration verification with no external network or real credentials:
+
+```sh
+docker run --rm --network none --cpus=1 --memory=768m --entrypoint sh sub2api-copilot-build:responses-v2 -c 'bun test && bunx tsc --noEmit'
+docker run --rm --network none --cpus=1 --memory=768m -v "$PWD/verify-responses-integration.ts:/app/verify-responses-integration.ts:ro" --entrypoint bun sub2api-copilot-build:responses-v2 run /app/verify-responses-integration.ts
+```
+
+The integration fixture checks JSON/SSE bytes, tool fields, credential replacement, agent/vision headers, error sanitization, invalid input, and client disconnect before and after upstream headers. It does not execute any external tools or verify live vision inference. Current routing supports HTTP POST Responses only, not WebSocket, compact, embeddings, or response retrieval/deletion endpoints.

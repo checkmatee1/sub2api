@@ -1,7 +1,7 @@
 name: sub2api-copilot
 services:
   adapter:
-    image: sub2api-copilot-adapter:0ea08feb-hardened-v1
+    image: sub2api-copilot-adapter:0ea08feb-responses-v2
     build:
       context: .
       dockerfile: Dockerfile
@@ -28,7 +28,7 @@ services:
     image: nginx:1.28.0-alpine
     ports: ["127.0.0.1:${COPILOT_GATEWAY_PORT:-18991}:8080"]
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.responses.conf:/etc/nginx/nginx.conf:ro
       - ./runtime/auth.inc:/etc/nginx/auth.inc:ro
     restart: unless-stopped
     cpus: 0.25

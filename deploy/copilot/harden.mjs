@@ -12,6 +12,10 @@ function replace(file, before, after) {
 
 replace("src/server.ts", 'import { tokenRoute } from "./routes/token/route"\n', "");
 replace("src/server.ts", 'server.route("/token", tokenRoute)\n', "");
+replace("src/server.ts", 'import { modelRoutes } from "./routes/models/route"\n',
+  'import { modelRoutes } from "./routes/models/route"\nimport { responsesRoutes } from "./routes/responses/route"\n');
+replace("src/server.ts", 'server.route("/v1/models", modelRoutes)\n',
+  'server.route("/v1/models", modelRoutes)\nserver.route("/responses", responsesRoutes)\nserver.route("/v1/responses", responsesRoutes)\n');
 writeFileSync("src/lib/error.ts", `import type { Context } from "hono"
 import type { ContentfulStatusCode } from "hono/utils/http-status"
 
