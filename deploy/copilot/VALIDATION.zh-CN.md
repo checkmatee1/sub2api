@@ -44,3 +44,20 @@
 - claude-haiku-5.5 和 claude-haiku-4.5 目录中可见但实际请求 HTTP 400；直接核实前者上游错误为 model_not_supported。模型目录不构成可用性证明，本轮仅确认 gpt-4.1 可用。
 - 尚未验证长时间令牌续期、在线断连取消及经线上 Sub2API 的端到端链路。
 - 线上数据库及账号未写入；新增专用账号/分组属于下一步，遵守已确认设计中的数据库隔离边界。
+
+## 专用 private 分组接入（2026-11-10）
+
+用户随后明确授权新增线上账号，并明确要求另建独立 private 分组；此授权取代前一阶段“不写线上账号/数据库”的限制，原服务不得停止的约束保持有效。
+
+- 使用已有管理员浏览器会话创建 `GitHub Copilot (private)`（账号 ID 5）及 `Copilot_private`（分组 ID 7）。分组为 OpenAI、专属、0.5 倍率，未复制其他分组账号。
+- 账号仅绑定分组 7；从最初误选的既有 ChatGPT_private（分组 5）移出。旧账号和既有 API Key 归属保持原样。当前管理员获准使用新专属分组。
+- 新账号并发及负载因子均为 1，强制 Chat Completions，禁用 Compact/WS/Embeddings。
+- 网关凭证通过 Mac mini 本机程序直接安装到新账号；未将生成的凭证明文交给模型或浏览器。浏览器创建时使用非秘密占位值，安装完成前暂停新账号调度。
+- 后台创建完成后页面渲染异常；仅对新账号执行有前置校验的局部数据库更新，并通过原生 scheduler_outbox 的 account_groups_changed 事件刷新账号及新旧分组缓存，无需重启服务。
+- 已验证模型映射：copilot-gpt-4.1 → gpt-4.1；copilot-gpt-4o → gpt-4o；copilot-gpt-4o-mini → gpt-4o-mini。
+- 三个别名分别经线上 18989 /v1/chat/completions 返回 HTTP 200 且包含有效 choices；usage_logs 确认 account_id=5。
+- 验证使用本机生成的十分钟临时调用 Key，调用后已禁用并软删除，真实值未输出；未创建或索要临时管理员 API Key。
+- 抽查 gpt-5.3-codex、gpt-6.1-sol、claude-sonnet-5.5、claude-opus-5.5、gemini-3.8-flash、gemini-4-argon、kimi-k3：当前适配器 Chat Completions 路径均返回 HTTP 400，故未开放。不能据此断言订阅在官方客户端完全不支持这些模型。
+- 首轮并发探测触发 adapter 的 2 秒请求间隔限制（429）；改为逐次间隔超过 2 秒后重测，以上结果来自重测。
+- 最终原 sub2api-snapshot 仍 running，StartedAt=2026-11-05T13:11:00.001051073Z，RestartCount=1；/health 返回 status=ok。
+- 本轮仅补充部署配置和验证记录，没有修改应用源码，先前完整测试结果仍列于上文；长期续期及在线断连取消仍未验证。
